@@ -3,6 +3,7 @@
 Commands:
 
 "Q" or "Quit" -Quits the program
+
 "PRODS" -List all products for sale
 "BOOKS" -List all books for sale
 "CUSTS" -List all registered customers
