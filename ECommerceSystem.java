@@ -123,7 +123,6 @@ public class ECommerceSystem {
     public ECommerceSystem() {
 
         try {
-//            products = readProducts("products.txt");
             products = readProducts("productsForTesting.txt");
             // productsForTesting.txt used for testing the:
             // -books with no year
