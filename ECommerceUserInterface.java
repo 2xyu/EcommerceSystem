@@ -232,40 +232,37 @@ public class ECommerceUserInterface {
                     }
 
                     // for non-shoes and non-nooks
-                    if (typeOfProduct.equals("1")) {
-                        amazon.addToCart(productId, customerId, "", null);
+                    switch (typeOfProduct) {
+                        case "1" -> amazon.addToCart(productId, customerId, "", null);
+
 
                         //for book
-                    }
-                    else if (typeOfProduct.equals("2")) {
-
-                        System.out.print("\nFormat [Paperback Hardcover EBook]: ");
-                        // get book forma and store in options string
-                        if (scanner.hasNextLine()) {
-                            productOptions = scanner.nextLine().trim();
+                        case "2" -> {
+                            System.out.print("\nFormat [Paperback Hardcover EBook]: ");
+                            // get book forma and store in options string
+                            if (scanner.hasNextLine()) {
+                                productOptions = scanner.nextLine().trim();
+                            }
+                            amazon.addToCart(productId, customerId, productOptions, "book");
                         }
-                        amazon.addToCart(productId, customerId, productOptions, "book");
 
                         // for shoe
-                    }
-                    else if (typeOfProduct.equals("3")) {
+                        case "3" -> {
+                            System.out.print("\nSize: \"6\" \"7\" \"8\" \"9\" \"10\": ");
 
-                        System.out.print("\nSize: \"6\" \"7\" \"8\" \"9\" \"10\": ");
+                            // get shoe size and store in options
+                            if (scanner.hasNextLine()) {
+                                productOptions = "Size " + scanner.nextLine().trim();
+                            }
+                            System.out.print("\nColor: \"Black\" \"Brown\": ");
 
-                        // get shoe size and store in options
-                        if (scanner.hasNextLine()) {
-                            productOptions = "Size " + scanner.nextLine().trim();
+                            // get shoe color and append to options
+                            if (scanner.hasNextLine()) {
+                                productOptions = productOptions + " in " + scanner.nextLine().trim();
+                            }
+                            amazon.addToCart(productId, customerId, productOptions, "shoe");
                         }
-                        System.out.print("\nColor: \"Black\" \"Brown\": ");
-
-                        // get shoe color and append to options
-                        if (scanner.hasNextLine()) {
-                            productOptions = productOptions + " in " + scanner.nextLine().trim();
-                        }
-                        amazon.addToCart(productId, customerId, productOptions, "shoe");
-                    }
-                    else {
-                        amazon.addToCart("", "", "", "Unknown");
+                        default -> amazon.addToCart("", "", "", "Unknown");
                     }
                 }
                 else if (action.equalsIgnoreCase("REMCARTITEM")) {
