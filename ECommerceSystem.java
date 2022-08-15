@@ -979,6 +979,7 @@ public class ECommerceSystem {
             }
         });
 
+
         switch (categoryInput) {
             case "1" -> enumCategory = Product.Category.GENERAL;
             case "2" -> enumCategory = Product.Category.CLOTHING;
