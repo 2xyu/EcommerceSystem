@@ -706,7 +706,7 @@ public class ECommerceSystem {
                     cartsWithItems.get(customerId).removeCartItem(item);
 
                     // if the product that got removed from the cart was the last product in the cart then, it removes the cart from the map entirely.
-                    if (cartItemArrayList.size()<=0){
+                    if (cartItemArrayList.size() <= 0){
                         cartsWithItems.remove(customerId);
                     }
 
@@ -979,44 +979,28 @@ public class ECommerceSystem {
             }
         });
 
-        if (categoryInput.equals("1")){
+        switch (categoryInput) {
+            case "1" -> enumCategory = Product.Category.GENERAL;
+            case "2" -> enumCategory = Product.Category.CLOTHING;
+            case "3" -> enumCategory = Product.Category.BOOKS;
+            case "4" -> enumCategory = Product.Category.FURNITURE;
+            case "5" -> enumCategory = Product.Category.COMPUTERS;
+            case "6" -> enumCategory = Product.Category.SHOES;
+            case "7" -> {
 
-            enumCategory = Product.Category.GENERAL;
-        }
-        else if (categoryInput.equals("2")){
-
-            enumCategory = Product.Category.CLOTHING;
-        }
-        else if (categoryInput.equals("3")){
-
-            enumCategory = Product.Category.BOOKS;
-        }
-        else if (categoryInput.equals("4")){
-
-            enumCategory = Product.Category.FURNITURE;
-        }
-        else if (categoryInput.equals("5")){
-
-            enumCategory = Product.Category.COMPUTERS;
-        }
-        else if (categoryInput.equals("6")){
-
-            enumCategory = Product.Category.SHOES;
-        }
-        else if (categoryInput.equals("7")) {
-
-            // only when category is set to "all"
-            for (Map.Entry<String, ArrayList<String>> ratingMap : categoryByAverageRatingsProducts) {
-                for (Product product : products.values()) {
-                    if (ratingMap.getKey().equals(product.getId()) && averRatingFinder(ratingMap.getKey()) >= minimumAverageRating) {
-                        System.out.printf("\nProduct Id: %-4s Category: %-10sProduct Name: %-25s Average Rating: %-5s",
-                                product.getId(), product.getCategory(), product.getName(), String.format("%.1f",averRatingFinder(product.getId())));
-                        break;
+                // only when category is set to "all"
+                for (Map.Entry<String, ArrayList<String>> ratingMap : categoryByAverageRatingsProducts) {
+                    for (Product product : products.values()) {
+                        if (ratingMap.getKey().equals(product.getId()) && averRatingFinder(ratingMap.getKey()) >= minimumAverageRating) {
+                            System.out.printf("\nProduct Id: %-4s Category: %-10sProduct Name: %-25s Average Rating: %-5s",
+                                    product.getId(), product.getCategory(), product.getName(), String.format("%.1f", averRatingFinder(product.getId())));
+                            break;
+                        }
                     }
                 }
+                // exits the method after it has printed all the products
+                return;
             }
-            // exits the method after it has printed all the products
-            return;
         }
 
         // used to print only the products of selected category that's not all categories
