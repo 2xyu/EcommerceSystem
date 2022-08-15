@@ -45,12 +45,12 @@ public class ECommerceSystem {
      * @return the map of all the products in [ProductId, Product] format
      * @throws FileNotFoundException file might be missing
      */
-    private Map<String, Product> readProducts(String fileName) throws FileNotFoundException{
+    private Map<String, Product> readProducts(String fileName) throws FileNotFoundException {
 
         Map<String, Product> lines = new TreeMap<String, Product>();
         Scanner scanner = new Scanner(new File(fileName));
 
-        while (scanner.hasNextLine()){
+        while (scanner.hasNextLine()) {
 
             String firstLine = scanner.nextLine();
             String secondLine = scanner.nextLine();
@@ -65,7 +65,7 @@ public class ECommerceSystem {
             String productId = generateProductId();
             double price = Double.parseDouble(thirdLine);
 
-            if (category == Product.Category.BOOKS){
+            if (category == Product.Category.BOOKS) {
 
                 String[] paperStocks = fourthLine.split(" ");
                 int paperBackStock = Integer.parseInt(paperStocks[0]);
@@ -87,8 +87,7 @@ public class ECommerceSystem {
                     product = new Book(productName, productId, price, paperBackStock, hardCoverStock, title, author, year);
                 }
 
-            }
-            else if (category == Product.Category.SHOES){
+            } else if (category == Product.Category.SHOES) {
 
                 // black shoe sizes
                 String[] blackShoeStocks = fourthLine.split(" ");
@@ -98,15 +97,14 @@ public class ECommerceSystem {
 
                 int[] blackShoeSizes = new int[5];
                 int[] brownShoeSizes = new int[5];
-                for (int i = 0; i< 5; i++){
+                for (int i = 0; i < 5; i++) {
                     blackShoeSizes[i] = Integer.parseInt(blackShoeStocks[i]);
                     brownShoeSizes[i] = Integer.parseInt(brownShoeStocks[i]);
                 }
 
                 product = new Shoes(productName, productId, price, blackShoeSizes[0], blackShoeSizes[1], blackShoeSizes[2], blackShoeSizes[3], blackShoeSizes[4],
-                                                                   brownShoeSizes[0], brownShoeSizes[1], brownShoeSizes[2], brownShoeSizes[3], brownShoeSizes[4]);
-            }
-            else {
+                        brownShoeSizes[0], brownShoeSizes[1], brownShoeSizes[2], brownShoeSizes[3], brownShoeSizes[4]);
+            } else {
                 int stock = Integer.parseInt(fourthLine);
                 product = new Product(productName, productId, price, stock, category);
             }
@@ -128,10 +126,10 @@ public class ECommerceSystem {
             // -books with no year
             // -shoes
             // you can comment out the code above and uncomment this code below to test it out.
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println("File not found");
             System.exit(1);
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("The txt file is not formatted correctly.\nThe program will now exit.");
             System.exit(1);
         }
@@ -201,6 +199,7 @@ public class ECommerceSystem {
 
     /**
      * Given a customer id, print all the current orders and shipped orders for them (if any)
+     *
      * @param customerId the id of the customer
      */
     public void printOrderHistory(String customerId) {
@@ -241,9 +240,10 @@ public class ECommerceSystem {
     /**
      * Used to order products.
      * BookOrShoe is used to keep track of whether ORDERBOOK or ORDERSHOES was used.
-     * @param productId the id of the product
-     * @param customerId the id of the customer
-     * @param productOptions the product option
+     *
+     * @param productId            the id of the product
+     * @param customerId           the id of the customer
+     * @param productOptions       the product option
      * @param orderBookOrOrderShoe either book or shoe or neither
      */
     public void orderProduct(String productId, String customerId, String productOptions, String orderBookOrOrderShoe) {
@@ -312,8 +312,7 @@ public class ECommerceSystem {
             if (!exist) {
                 throw new InvalidProductOptionsException("Book", productId, productOptions);
             }
-        }
-        else if (currentProduct.getCategory() == (Product.Category.SHOES)) {
+        } else if (currentProduct.getCategory() == (Product.Category.SHOES)) {
 
             // can only be false if it is a shoe with an invalid option
             if (!exist) {
@@ -351,7 +350,8 @@ public class ECommerceSystem {
 
     /**
      * Create a new Customer object and add it to the list of customers
-     * @param name the name of the customer
+     *
+     * @param name    the name of the customer
      * @param address the address of the customer
      */
     public void createCustomer(String name, String address) {
@@ -371,6 +371,7 @@ public class ECommerceSystem {
 
     /**
      * Ships an order
+     *
      * @param orderNumber the order number
      */
     public void shipOrder(String orderNumber) {
@@ -398,6 +399,7 @@ public class ECommerceSystem {
 
     /**
      * Cancel a specific order based on order number
+     *
      * @param orderNumber or the order number
      */
     public void cancelOrder(String orderNumber) {
@@ -422,6 +424,7 @@ public class ECommerceSystem {
 
     /**
      * prints all the books by a certain author
+     *
      * @param author the outhor
      */
     public void printBooksByAuthor(String author) {
@@ -449,17 +452,13 @@ public class ECommerceSystem {
 
                 if (o1.getYear() == null && o2.getYear() == null) {
                     return 0;
-                }
-                else if (o1.getYear() == null && o2.getYear() != null) {
+                } else if (o1.getYear() == null && o2.getYear() != null) {
                     return -1;
-                }
-                else if (o1.getYear() != null && o2.getYear() == null){
+                } else if (o1.getYear() != null && o2.getYear() == null) {
                     return 1;
-                }
-                else if (o1.getYear() < o2.getYear()){
+                } else if (o1.getYear() < o2.getYear()) {
                     return -1;
-                }
-                else if (o1.getYear() > o2.getYear()){
+                } else if (o1.getYear() > o2.getYear()) {
                     return 1;
                 }
                 return 0;
@@ -469,7 +468,7 @@ public class ECommerceSystem {
         System.out.println("Books by " + author + ": ");
         for (Book book : booksByAuthor) {
             String outP;
-            if (book.getYear() == null){
+            if (book.getYear() == null) {
                 outP = "N/A";
             } else {
                 outP = String.valueOf(book.getYear());
@@ -490,8 +489,7 @@ public class ECommerceSystem {
             public int compare(Product o1, Product o2) {
                 if (o1.getPrice() < o2.getPrice()) {
                     return -1;
-                }
-                else if (o1.getPrice() == o2.getPrice()) {
+                } else if (o1.getPrice() == o2.getPrice()) {
                     return 0;
                 }
                 return 1;
@@ -515,17 +513,16 @@ public class ECommerceSystem {
             public int compare(Product o1, Product o2) {
                 if (o1.getName().compareTo(o2.getName()) > 0) {
                     return 1;
-                }
-                else if (o1.getName().compareTo(o2.getName()) < 0) {
+                } else if (o1.getName().compareTo(o2.getName()) < 0) {
                     return -1;
                 }
                 // if it's a book then sort by book title
                 else if (o1.getName().equalsIgnoreCase("book") && o2.getName().equalsIgnoreCase("book")) {
 
-                    if (((Book) o1).getTitle().compareTo(((Book) o2).getTitle()) > 0){
+                    if (((Book) o1).getTitle().compareTo(((Book) o2).getTitle()) > 0) {
                         return 1;
                     }
-                    if (((Book) o1).getTitle().compareTo(((Book) o2).getTitle()) < 0){
+                    if (((Book) o1).getTitle().compareTo(((Book) o2).getTitle()) < 0) {
                         return -1;
                     }
                 }
@@ -533,7 +530,7 @@ public class ECommerceSystem {
             }
         });
 
-        for (Product product : productsByName){
+        for (Product product : productsByName) {
             product.print();
         }
 
@@ -549,19 +546,20 @@ public class ECommerceSystem {
 
     /**
      * Sort products alphabetically by product name
-     * @param productId the ID of the product
-     * @param customerId the ID of the customer
-     * @param productOptions the product option
+     *
+     * @param productId          the ID of the product
+     * @param customerId         the ID of the customer
+     * @param productOptions     the product option
      * @param typeBookOrTypeShoe either book or shoe or neither
      */
-    public void addToCart(String productId, String customerId, String productOptions, String typeBookOrTypeShoe){
+    public void addToCart(String productId, String customerId, String productOptions, String typeBookOrTypeShoe) {
 
         Product currentProduct;
         Customer currentCustomer = null;
         boolean exist = false;
 
         // throws an exception if typeBookOrTypeShoe was not 1-3
-        if (typeBookOrTypeShoe != null && typeBookOrTypeShoe.equals("Unknown")){
+        if (typeBookOrTypeShoe != null && typeBookOrTypeShoe.equals("Unknown")) {
             throw new UnknownProductTypeException();
         }
 
@@ -628,8 +626,7 @@ public class ECommerceSystem {
             if (!exist) {
                 throw new InvalidProductOptionsException("Book", productId, productOptions);
             }
-        }
-        else if (currentProduct.getCategory() == (Product.Category.SHOES)) {
+        } else if (currentProduct.getCategory() == (Product.Category.SHOES)) {
 
             // can only be false if it is a shoe with an invalid option
             if (!exist) {
@@ -665,11 +662,12 @@ public class ECommerceSystem {
      * the reason why this is the only boolean command is that I wanted to make it so that it would only print the
      * "success" msg only when the "REMCARTITEM" is used and not when removeRemoveFromCart() is called from
      * orderAllCartItemOfCustomer
-     * @param productId the ID of the product
+     *
+     * @param productId  the ID of the product
      * @param customerId the ID customer
      * @return whether an item could be removed from the cart
      */
-    public boolean removeRemoveFromCart(String productId, String customerId){
+    public boolean removeRemoveFromCart(String productId, String customerId) {
 
         boolean exist = false;
 
@@ -695,18 +693,18 @@ public class ECommerceSystem {
         }
 
         //see if the customerId has a cart
-        if (cartsWithItems.containsKey(customerId)){
+        if (cartsWithItems.containsKey(customerId)) {
 
             ArrayList<CartItem> cartItemArrayList = cartsWithItems.get(customerId).getCartItemList();
 
             //checks if the cart of customerId has the product and if it does then it removes it
-            for (CartItem item : cartItemArrayList){
-                if (item.getProduct().getId().equalsIgnoreCase(productId)){
+            for (CartItem item : cartItemArrayList) {
+                if (item.getProduct().getId().equalsIgnoreCase(productId)) {
 
                     cartsWithItems.get(customerId).removeCartItem(item);
 
                     // if the product that got removed from the cart was the last product in the cart then, it removes the cart from the map entirely.
-                    if (cartItemArrayList.size() <= 0){
+                    if (cartItemArrayList.size() <= 0) {
                         cartsWithItems.remove(customerId);
                     }
 
@@ -717,8 +715,7 @@ public class ECommerceSystem {
 
             // if the product isn't in customer's cart
             throw new ProductNotInCartException(productId, customerId);
-        }
-        else {
+        } else {
             // if the customer has no CartItems in their cart.
             throw new CustomerHasNoCartItemException(customerId);
         }
@@ -726,9 +723,10 @@ public class ECommerceSystem {
 
     /**
      * prints all the items in a certain existing cart
+     *
      * @param customerId the ID of a customer
      */
-    public void printAllCartItemOfCustomer(String customerId){
+    public void printAllCartItemOfCustomer(String customerId) {
 
         boolean exist = false;
 
@@ -746,15 +744,14 @@ public class ECommerceSystem {
         }
 
         // checks if the customer actually has a cart
-        if (cartsWithItems.containsKey(customerId)){
+        if (cartsWithItems.containsKey(customerId)) {
             System.out.println("CustomerId " + customerId + " cart items");
 
             //prints all the items in the cart of the customer
-            for (CartItem item : cartsWithItems.get(customerId).getCartItemList()){
+            for (CartItem item : cartsWithItems.get(customerId).getCartItemList()) {
                 item.getProduct().print();
             }
-        }
-        else {
+        } else {
             // if the customer has no CartItems in their cart.
             throw new CustomerHasNoCartItemException(customerId);
         }
@@ -762,9 +759,10 @@ public class ECommerceSystem {
 
     /**
      * orders all the items in the cart of a customer and as well as empties the cart
+     *
      * @param customerId the ID of a customer
      */
-    public void orderAllCartItemOfCustomer(String customerId){
+    public void orderAllCartItemOfCustomer(String customerId) {
 
         boolean exist = false;
 
@@ -786,7 +784,7 @@ public class ECommerceSystem {
             ArrayList<CartItem> cartItemArrayList = cartsWithItems.get(customerId).getCartItemList();
             int itemCount = 1;
 
-            for (int i = 0; i < cartSize; i++){
+            for (int i = 0; i < cartSize; i++) {
 
                 Product product = cartItemArrayList.get(i).getProduct();
                 String productName = product.getName();
@@ -797,7 +795,7 @@ public class ECommerceSystem {
                 // to account for the scenario where multiple orders have been made to the same product to the point
                 // where are more items in the cart then there are the stocks of the items and so it will eventually
                 // get out of stock as each of the items are being ordered from the cart
-                if (product.getStockCount(productOptions) <= 0){
+                if (product.getStockCount(productOptions) <= 0) {
 
                     String outOptions = "";
 
@@ -824,8 +822,7 @@ public class ECommerceSystem {
                 i--;
                 cartSize--;
             }
-        }
-        else {
+        } else {
             // if the customer has no CartItems in their cart.
             throw new CustomerHasNoCartItemException(customerId);
         }
@@ -834,7 +831,7 @@ public class ECommerceSystem {
     /**
      * prints the products order from the most to the least ordered
      */
-    public void printProductOrderStats(){
+    public void printProductOrderStats() {
 
         // makes an arrayList of the map of <String, Integer>
         ArrayList<Map.Entry<String, Integer>> productIDsByOrderStats = new ArrayList<Map.Entry<String, Integer>>(productOrderStats.entrySet());
@@ -843,10 +840,9 @@ public class ECommerceSystem {
         productIDsByOrderStats.sort(new Comparator<Map.Entry<String, Integer>>() {
 
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                if (o1.getValue() < o2.getValue()){
+                if (o1.getValue() < o2.getValue()) {
                     return 1;
-                }
-                else if (o1.getValue() > o2.getValue()){
+                } else if (o1.getValue() > o2.getValue()) {
                     return -1;
                 }
                 return 0;
@@ -854,9 +850,9 @@ public class ECommerceSystem {
         });
 
         // goose from the sorted ArrayList of Ids and prints the product with the associated Ids.
-        for (Map.Entry<String, Integer> statsMap : productIDsByOrderStats){
-            for (Product product : products.values()){
-                if (product.getId().equals(statsMap.getKey())){
+        for (Map.Entry<String, Integer> statsMap : productIDsByOrderStats) {
+            for (Product product : products.values()) {
+                if (product.getId().equals(statsMap.getKey())) {
                     System.out.printf("\nProduct Name: %-25s Product Id: %-5s Ordered: %-5s", product.getName(), product.getId(), statsMap.getValue());
                     break;
                 }
@@ -866,36 +862,39 @@ public class ECommerceSystem {
 
     /**
      * private method used for calculating the average rating given a productId
+     *
      * @param productId the ID of a product
      * @return the average rating of a product
      */
-    private double averRatingFinder(String productId){
+    private double averRatingFinder(String productId) {
 
         double aveRatings = 0;
 
-        if (productRatings.get(productId).size() > 0){
+        if (productRatings.get(productId).size() > 0) {
 
             // gets the value of the map (this being a string arraylist of all the ratings of a product)
-            for (int i = 0; i < productRatings.get(productId).size(); i++){
+            for (int i = 0; i < productRatings.get(productId).size(); i++) {
                 aveRatings += Double.parseDouble(productRatings.get(productId).get(i));
-            } aveRatings = aveRatings / productRatings.get(productId).size();
-        } return aveRatings;
+            }
+            aveRatings = aveRatings / productRatings.get(productId).size();
+        }
+        return aveRatings;
     }
 
     /**
      * adds one rating to a product
+     *
      * @param productId the ID of a product
-     * @param rating the rating to be entered for the product
+     * @param rating    the rating to be entered for the product
      */
-    public void rateProduct(String productId, String rating){
+    public void rateProduct(String productId, String rating) {
 
         // throws an exception if a rating between 1 and 5 was not entered or if rating was not a number
         try {
-            if (Double.parseDouble(rating) > 5 || Double.parseDouble(rating) < 1){
+            if (Double.parseDouble(rating) > 5 || Double.parseDouble(rating) < 1) {
                 throw new InvalidRatingException(rating);
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             throw new InvalidRatingException(rating);
         }
 
@@ -915,6 +914,7 @@ public class ECommerceSystem {
 
     /**
      * displays the average rating of one product
+     *
      * @param productId the ID of a product
      */
     public void ratingsOfOneProduct(String productId) {
@@ -936,29 +936,30 @@ public class ECommerceSystem {
     /**
      * Prints all the products of a certain category with an average rating greater than or equal to a minimum rating
      * entered
+     *
      * @param categoryInput the selected category for the products to be printed
      * @param minimumRating the minimum rating each product must have
      */
-    public void printCategoryBaseOnMinimumRating(String categoryInput, String minimumRating){
+    public void printCategoryBaseOnMinimumRating(String categoryInput, String minimumRating) {
 
         double minimumAverageRating;
         Product.Category enumCategory = null;
 
         // throws an error if an improper category was selected.
-        if (!"1234567".contains(categoryInput)){
+        if (!"1234567".contains(categoryInput)) {
             throw new InvalidCategoryException(categoryInput);
         }
 
         // throws an exception if a rating between 0 and 5 was not entered or if rating was not a number
         try {
             minimumAverageRating = Double.parseDouble(minimumRating);
-            if (minimumAverageRating > 5 || minimumAverageRating < 0){
+            if (minimumAverageRating > 5 || minimumAverageRating < 0) {
                 throw new InvalidRatingException(minimumRating);
             }
         }
 
         // to account for the scenario in which the user enters a non-number
-        catch (Exception e){
+        catch (Exception e) {
             throw new InvalidRatingException(minimumRating);
         }
 
@@ -969,10 +970,9 @@ public class ECommerceSystem {
         categoryByAverageRatingsProducts.sort(new Comparator<Map.Entry<String, ArrayList<String>>>() {
 
             public int compare(Map.Entry<String, ArrayList<String>> o1, Map.Entry<String, ArrayList<String>> o2) {
-                if (averRatingFinder(o1.getKey()) < averRatingFinder(o2.getKey())){
+                if (averRatingFinder(o1.getKey()) < averRatingFinder(o2.getKey())) {
                     return 1;
-                }
-                else if (averRatingFinder(o1.getKey()) > averRatingFinder(o2.getKey())){
+                } else if (averRatingFinder(o1.getKey()) > averRatingFinder(o2.getKey())) {
                     return -1;
                 }
                 return 0;
@@ -1019,9 +1019,10 @@ public class ECommerceSystem {
 
 class UnknownCustomerException extends RuntimeException {
 
-    public UnknownCustomerException(){}
+    public UnknownCustomerException() {
+    }
 
-    public UnknownCustomerException(String customerId){
+    public UnknownCustomerException(String customerId) {
 
         super("Customer " + customerId + " not found.");
     }
@@ -1029,9 +1030,10 @@ class UnknownCustomerException extends RuntimeException {
 
 class UnknownProductException extends RuntimeException {
 
-    public UnknownProductException(){}
+    public UnknownProductException() {
+    }
 
-    public UnknownProductException(String productId){
+    public UnknownProductException(String productId) {
 
         super("Product " + productId + " not found.");
     }
@@ -1039,35 +1041,37 @@ class UnknownProductException extends RuntimeException {
 
 class InvalidProductOptionsException extends RuntimeException {
 
-    public InvalidProductOptionsException(){}
+    public InvalidProductOptionsException() {
+    }
 
-    public InvalidProductOptionsException(String bookOrShoe, String productId, String productOptions){
+    public InvalidProductOptionsException(String bookOrShoe, String productId, String productOptions) {
 
         super("Product " + bookOrShoe + " Product Id: " + productId + " Invalid Option: " + productOptions + ".");
     }
 }
 
-class ProductOutOfStockException extends RuntimeException{
+class ProductOutOfStockException extends RuntimeException {
 
-    public ProductOutOfStockException(){}
+    public ProductOutOfStockException() {
+    }
 
-    public ProductOutOfStockException(String productId, String productName, String productOptions){
+    public ProductOutOfStockException(String productId, String productName, String productOptions) {
 
         super("Product Id: " + productId + " Product Name: " + productName + productOptions + " is out of stock.");
     }
 }
 
-class InvalidCustomerNameException extends RuntimeException{
+class InvalidCustomerNameException extends RuntimeException {
 
-    public InvalidCustomerNameException(){
+    public InvalidCustomerNameException() {
 
         super("Invalid customer name.");
     }
 }
 
-class InvalidCustomerAddressException extends RuntimeException{
+class InvalidCustomerAddressException extends RuntimeException {
 
-    public InvalidCustomerAddressException(){
+    public InvalidCustomerAddressException() {
 
         super("Invalid customer address.");
     }
@@ -1075,9 +1079,10 @@ class InvalidCustomerAddressException extends RuntimeException{
 
 class UnknownOrderNumberException extends RuntimeException {
 
-    public UnknownOrderNumberException(){}
+    public UnknownOrderNumberException() {
+    }
 
-    public UnknownOrderNumberException(String orderNumber){
+    public UnknownOrderNumberException(String orderNumber) {
 
         super("Order " + orderNumber + " not found.");
     }
@@ -1086,63 +1091,69 @@ class UnknownOrderNumberException extends RuntimeException {
 // The exceptions below here are extra added to account for the unmentioned errors in the pdf that may occur
 class ImproperSelectCommandException extends RuntimeException {
 
-    public ImproperSelectCommandException(){}
+    public ImproperSelectCommandException() {
+    }
 
-    public ImproperSelectCommandException(String bookOrShoe, String correctCommand){
+    public ImproperSelectCommandException(String bookOrShoe, String correctCommand) {
         super("An improper command was used to select is a " + bookOrShoe + ". Please use " + correctCommand + " instead.");
     }
 }
 
-class UnknownAuthorException extends RuntimeException{
+class UnknownAuthorException extends RuntimeException {
 
-    public UnknownAuthorException(){}
+    public UnknownAuthorException() {
+    }
 
-    public UnknownAuthorException(String author){
+    public UnknownAuthorException(String author) {
         super("Author " + author + " not found");
     }
 }
 
 class UnknownProductTypeException extends RuntimeException {
 
-    public UnknownProductTypeException(){
+    public UnknownProductTypeException() {
         super("An improper Product Type was entered. Please only select [1,2,3] instead.");
     }
 }
 
-class ProductNotInCartException extends RuntimeException{
+class ProductNotInCartException extends RuntimeException {
 
-    public ProductNotInCartException(){}
+    public ProductNotInCartException() {
+    }
 
-    public ProductNotInCartException(String productId, String customerId){
+    public ProductNotInCartException(String productId, String customerId) {
 
         super("Product " + productId + " is not in the cart of customer " + customerId + ".");
     }
 }
 
-class CustomerHasNoCartItemException extends RuntimeException{
+class CustomerHasNoCartItemException extends RuntimeException {
 
-    public CustomerHasNoCartItemException(){}
+    public CustomerHasNoCartItemException() {
+    }
 
-    public CustomerHasNoCartItemException(String customerId){
+    public CustomerHasNoCartItemException(String customerId) {
         super("Customer " + customerId + " has no items in their cart.");
     }
 }
 
 class InvalidRatingException extends RuntimeException {
 
-    public InvalidRatingException(){}
+    public InvalidRatingException() {
+    }
 
-    public InvalidRatingException(String rating){
+    public InvalidRatingException(String rating) {
 
         super("Rating " + rating + " is invalid. Please only input a rating between 0 and 5");
     }
 }
 
-class InvalidCategoryException extends RuntimeException{
+class InvalidCategoryException extends RuntimeException {
 
-    public InvalidCategoryException(){}
+    public InvalidCategoryException() {
+    }
 
-    public InvalidCategoryException(String category){
+    public InvalidCategoryException(String category) {
 
         super("Category " + category + " is invalid. Please only select [1,2,3,4,5,6,7] instead");
     }
