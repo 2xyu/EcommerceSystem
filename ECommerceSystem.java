@@ -704,7 +704,7 @@ public class ECommerceSystem {
                     cartsWithItems.get(customerId).removeCartItem(item);
 
                     // if the product that got removed from the cart was the last product in the cart then, it removes the cart from the map entirely.
-                    if (cartItemArrayList.size() <= 0) {
+                    if (cartItemArrayList.size() == 0) {
                         cartsWithItems.remove(customerId);
                     }
 
@@ -964,16 +964,13 @@ public class ECommerceSystem {
         ArrayList<Map.Entry<String, ArrayList<String>>> categoryByAverageRatingsProducts = new ArrayList<Map.Entry<String, ArrayList<String>>>(productRatings.entrySet());
 
         //orders the Arraylist from greatest to least ratings (the bonus never said to do this)
-        categoryByAverageRatingsProducts.sort(new Comparator<Map.Entry<String, ArrayList<String>>>() {
-
-            public int compare(Map.Entry<String, ArrayList<String>> o1, Map.Entry<String, ArrayList<String>> o2) {
-                if (averRatingFinder(o1.getKey()) < averRatingFinder(o2.getKey())) {
-                    return 1;
-                } else if (averRatingFinder(o1.getKey()) > averRatingFinder(o2.getKey())) {
-                    return -1;
-                }
-                return 0;
+        categoryByAverageRatingsProducts.sort((o1, o2) -> {
+            if (averRatingFinder(o1.getKey()) < averRatingFinder(o2.getKey())) {
+                return 1;
+            } else if (averRatingFinder(o1.getKey()) > averRatingFinder(o2.getKey())) {
+                return -1;
             }
+            return 0;
         });
 
 
