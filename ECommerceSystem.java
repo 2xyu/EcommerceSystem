@@ -658,7 +658,7 @@ public class ECommerceSystem {
 
 
     /**
-     * removes the first instance of an item with the product Id from an existing cart.
+     * removes the first instance of an item with the product ID from an existing cart.
      * the reason why this is the only boolean command is that I wanted to make it so that it would only print the
      * "success" msg only when the "REMCARTITEM" is used and not when removeRemoveFromCart() is called from
      * orderAllCartItemOfCustomer
@@ -834,19 +834,16 @@ public class ECommerceSystem {
     public void printProductOrderStats() {
 
         // makes an arrayList of the map of <String, Integer>
-        ArrayList<Map.Entry<String, Integer>> productIDsByOrderStats = new ArrayList<Map.Entry<String, Integer>>(productOrderStats.entrySet());
+        ArrayList<Map.Entry<String, Integer>> productIDsByOrderStats = new ArrayList<>(productOrderStats.entrySet());
 
         // sorts the arrayList from greatest to the least orders
-        productIDsByOrderStats.sort(new Comparator<Map.Entry<String, Integer>>() {
-
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                if (o1.getValue() < o2.getValue()) {
-                    return 1;
-                } else if (o1.getValue() > o2.getValue()) {
-                    return -1;
-                }
-                return 0;
+        productIDsByOrderStats.sort((o1, o2) -> {
+            if (o1.getValue() < o2.getValue()) {
+                return 1;
+            } else if (o1.getValue() > o2.getValue()) {
+                return -1;
             }
+            return 0;
         });
 
         // goose from the sorted ArrayList of Ids and prints the product with the associated Ids.
