@@ -159,8 +159,71 @@ public class ECommerceSystem {
 
     public void printAllProducts() {
 
-        for (Product product : products.values())
-            product.print();
+        int start = 0;
+        int pageSize = 4;
+        int end = start + pageSize;
+        int maxEnd = products.size() - 1; // assuming there are no gaps in the keys
+        boolean exitLoop = false;
+        Scanner scanner = new Scanner(System.in);
+        String productID = "";
+
+        while (!exitLoop) {
+            for (int i = start; i <= Math.min(end, maxEnd); i++) {
+                productID = String.valueOf(i + 700);
+                if (products.containsKey(productID)) {
+                    products.get(productID).print();
+                }
+            }
+            System.out.println("\nCatalogue Page: " + (start / pageSize + 1));
+            System.out.print("""
+                    
+                    Type 'n' for next page.
+                    'p' for previous page.
+                    A number to go to a specific page.
+                    Any other key to stay on the current page.
+                    >""");
+            String input = scanner.nextLine().toLowerCase();
+            switch (input) {
+                case "n" -> {
+                    if (end < maxEnd) {
+                        start = end + 1;
+                        end = Math.min(start + pageSize, maxEnd);
+                    }
+                }
+                case "p" -> {
+                    if (start > 0) {
+                        end = start - 1;
+                        start = Math.max(end - pageSize, 0);
+                    }
+                }
+                case "" -> {
+                    System.out.print("""
+                    
+                    Type 'n' for next page.
+                    'p' for previous page.
+                    A number to go to a specific page.
+                    Any other key to stay on the current page.
+                    >""");
+                }
+                default -> {
+                    try {
+                        int pageNum = Integer.parseInt(input);
+                        if (pageNum >= 0 && pageNum <= (maxEnd + 1) / pageSize - 1) {
+                            start = pageNum * (pageSize + 1);
+                            end = Math.min(start + pageNum, maxEnd);
+                        } else {
+                            //MAKE AN ERRORRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+                            System.out.println("Invalid page number.");
+                        }
+                    } catch (NumberFormatException e) {
+                        exitLoop = true;
+                    }
+                }
+            }
+        }
+
+//        for (Product product : products.values())
+//            product.print();
     }
 
     // Print all products that are books. See getCategory() method in class Product

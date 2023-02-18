@@ -20,7 +20,10 @@ public class ECommerceUserInterface {
             try {
                 if (action.equals("")) {
 
-                    System.out.print("\n>");
+                    System.out.print("""
+                            "Q" or "QUIT" to exit.
+                            "PRODS" to display all products.
+                            >""");
                 }
                 else if (action.equalsIgnoreCase("Q") || action.equalsIgnoreCase("QUIT")) {
 
@@ -29,7 +32,6 @@ public class ECommerceUserInterface {
                     System.exit(0);
                 }
                 else if (action.equalsIgnoreCase("PRODS")) { // List all products for sale
-
                     amazon.printAllProducts();
                 }
                 else if (action.equalsIgnoreCase("BOOKS")) {   // List all books for sale

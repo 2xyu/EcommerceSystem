@@ -13,7 +13,7 @@
  */
 public class Product {
 
-	public static enum Category {GENERAL, CLOTHING, BOOKS, FURNITURE, COMPUTERS, SHOES}
+	protected enum Category {GENERAL, CLOTHING, BOOKS, FURNITURE, COMPUTERS, SHOES}
 
     private String name;
     private String id;
