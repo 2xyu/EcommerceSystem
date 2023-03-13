@@ -20,6 +20,8 @@ public class ECommerceUserInterface {
             try {
                 if (action.equals("")) {
 
+                    
+                    
                     System.out.print("""
                             "Q" or "QUIT" to exit.
                             "PRODS" to display all products.
