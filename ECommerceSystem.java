@@ -121,7 +121,7 @@ public class ECommerceSystem {
     public ECommerceSystem() {
 
         try {
-            products = readProducts("productsForTesting.txt");
+            products = readProducts("products.txt");
             // productsForTesting.txt used for testing the:
             // -books with no year
             // -shoes
@@ -139,7 +139,6 @@ public class ECommerceSystem {
         customers.add(new Customer(generateCustomerId(), "Prince Humperdinck", "The Castle, Florin"));
         customers.add(new Customer(generateCustomerId(), "Andy Dufresne", "Shawshank Prison, Maine"));
         customers.add(new Customer(generateCustomerId(), "Ferris Bueller", "4160 Country Club Drive, Long Beach"));
-
     }
 
     private String generateOrderNumber() {
@@ -180,6 +179,7 @@ public class ECommerceSystem {
                     Type 'n' for next page.
                     'p' for previous page.
                     A number to go to a specific page.
+                    'q' to quit searching.
                     Any other key to stay on the current page.
                     >""");
             String input = scanner.nextLine().toLowerCase();
@@ -202,6 +202,7 @@ public class ECommerceSystem {
                     Type 'n' for next page.
                     'p' for previous page.
                     A number to go to a specific page.
+                    'q' to quit searching.
                     Any other key to stay on the current page.
                     >""");
                 }
@@ -216,7 +217,9 @@ public class ECommerceSystem {
                             System.out.println("Invalid page number.");
                         }
                     } catch (NumberFormatException e) {
-                        exitLoop = true;
+                        if (input.equalsIgnoreCase("q")){
+                            exitLoop = true;
+                        }
                     }
                 }
             }
