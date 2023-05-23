@@ -10,4 +10,4 @@ Some key futures
 -
     -Data is saved locally
     -Able to keep track of different user accounts and product stocks
-    
+    -Able to update products and as well as user account
