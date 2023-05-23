@@ -1,0 +1,56 @@
+CUSTOMER
+00900
+Inigo Montoya
+swordGuy1
+ilikeswords123
+123.56
+1 SwordMaker Lane, Florin
+CUSTOMER
+00901
+Prince Humperdinck
+prince2
+royal123
+1999.01
+The Castle, Florin
+CUSTOMER
+00902
+Andy Dufresne
+4andy2
+password123
+50
+Shawshank Prison, Maine
+CUSTOMER
+00903
+Ferris Bueller
+Bull
+Fer
+101.12
+4160 Country Club Drive, Long Beach
+CUSTOMER
+00904
+Viet Hoang
+v22
+qwe123
+19806.99
+myHouse St.
+SELLER
+00970
+Death Merchant
+gun1
+bullet
+190220.23
+classified
+CUSTOMER
+00905
+amcus
+cus
+cus123
+999.0
+cusSt
+SELLER
+00906
+seller
+sel
+se123
+1234.0
+sellerSt

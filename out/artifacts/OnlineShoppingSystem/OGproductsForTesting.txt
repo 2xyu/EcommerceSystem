@@ -1,0 +1,184 @@
+COMPUTER
+00101
+00700
+Acer Laptop
+989.0
+99
+5
+1
+FURNITURE
+00101
+00701
+Apex Desk
+1378.0
+12
+4
+1
+BOOK
+00101
+00702
+Ahm Gonna Make You Learn
+45.0
+42
+
+3
+T. McInerney
+2021
+CLOTHING
+00101
+00703
+DadBod Jeans
+24.0
+50
+
+5
+CLOTHING
+00101
+00704
+Polo High Socks
+5.0
+199
+4 2
+8
+CLOTHING
+00101
+00705
+Tightie Whities
+15.0
+99
+4 2
+5
+BOOK
+00101
+00706
+How to Fool Your Prof
+35.0
+16
+1 5 4
+6
+D. Umbast
+1997
+BOOK
+00101
+00707
+How to Escape from Prison
+45.0
+24
+4
+5
+A. Fugitive
+1963
+BOOK
+00101
+00708
+How to Teach Programming
+45.0
+12
+4 5 5 5
+32
+T. McInerney
+2001
+GENERAL
+00101
+00709
+Rock Hammer
+10.0
+22
+
+0
+BOOK
+00101
+00710
+Ahm Gonna Make You Learn More
+45.0
+322
+4 2 3 4 1
+52
+T. McInerney
+2022
+BOOK
+00101
+00711
+Sir Gawain & The Green Knight
+15.0
+16
+4 2 1
+7
+J.R.R. Tolkien
+1925
+BOOK
+00101
+00712
+The Book of Lost Tales, Part I
+22.99
+12
+
+0
+J.R.R. Tolkien
+1983
+BOOK
+00101
+00713
+Smith of Wootton Major
+14.84
+19
+
+0
+J.R.R. Tolkien
+1990
+BOOK
+00101
+00714
+The Hobbit
+14.5
+17
+
+0
+J.R.R. Tolkien
+1966
+BOOK
+00101
+00715
+The Fellowship of the Ring
+10.99
+32
+4
+13
+J.R.R. Tolkien
+1997
+GENERAL
+00101
+00716
+A pack of pens
+12.0
+5
+
+0
+CLOTHING
+00101
+00717
+An ugly sweater
+35.0
+1
+
+0
+VIDEOGAME
+00101
+00718
+Halo 3
+59.99
+4
+2 5 5
+7
+M
+FPS
+MOVIE
+00101
+00719
+Shrek
+47.87
+23
+5 5 5 5 5
+12
+Comedy
+1h 30m

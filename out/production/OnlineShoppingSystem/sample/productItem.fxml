@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="itemAnchPane" maxWidth="621.0" minWidth="621.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ItemController">
+   <children>
+      <HBox fx:id="itemC" alignment="CENTER_LEFT" layoutX="2.0" layoutY="2.0" maxHeight="-Infinity" maxWidth="621.0" minHeight="-Infinity" minWidth="621.0" prefHeight="53.0" prefWidth="621.0" spacing="100.0" style="-fx-background-color: ghostwhite; -fx-background-radius: 5; -fx-background-insets: 0;">
+          <children>
+              <Label fx:id="itemLabel" maxWidth="150.0" prefHeight="17.0" prefWidth="133.0" text="TestItem" translateX="30.0" wrapText="true">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+              <Label fx:id="categoryLabel" maxWidth="75.0" minWidth="75.0" text="Category">
+                  <HBox.margin>
+                      <Insets />
+                  </HBox.margin>
+              </Label>
+              <Label fx:id="priceLabel" maxWidth="50.0" minWidth="50.0" text="\$69">
+                  <HBox.margin>
+                      <Insets />
+                  </HBox.margin>
+              </Label>
+              <Button fx:id="productSelect" mnemonicParsing="false" onAction="#itemBtnHandler" prefHeight="10.0" prefWidth="60.0" style="-fx-border-color: #2A73FF; -fx-border-radius: 20; -fx-background-color: transparent;" text="Select" translateX="-25.0">
+                  <HBox.margin>
+                      <Insets />
+                  </HBox.margin>
+              </Button>
+          </children>
+          <effect>
+              <DropShadow blurType="GAUSSIAN" height="5.0" radius="2.0" width="5.0" />
+          </effect>
+      </HBox>
+   </children>
+</AnchorPane>

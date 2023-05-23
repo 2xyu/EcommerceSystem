@@ -1,0 +1,86 @@
+COMPUTERS
+101
+700
+Acer Laptop
+989.0
+99
+5
+FURNITURE
+101
+701
+Apex Desk
+1378.0
+12
+4
+BOOKS
+101
+702
+Ahm Gonna Make You Learn
+45.0
+42
+2
+T. McInerney
+2021
+CLOTHING
+101
+703
+DadBod Jeans
+24.0
+50
+2.5
+CLOTHING
+101
+704
+Polo High Socks
+5.0
+199
+
+CLOTHING
+101
+705
+Tightie Whities
+15.0
+99
+4 2
+BOOKS
+101
+706
+How to Fool Your Prof
+35.0
+16
+1 5 4
+D. Umbast
+1997
+BOOKS
+101
+707
+How to Escape from Prison
+45.0
+24
+4
+A. Fugitive
+1963
+BOOKS
+101
+708
+How to Teach Programming
+45.0
+12
+4 5 5 5
+T. McInerney
+2001
+GENERAL
+101
+709
+Rock Hammer
+10.0
+22
+BOOKS
+101
+710
+Ahm Gonna Make You Learn More
+45.0
+322
+4 2 3 4 1
+T. McInerney
+2022
